@@ -1,10 +1,11 @@
 import Login from "./views/Login";
 import Register from "./views/Register";
 import User from "./views/User";
-import {createBrowserRouter} from "react-router-dom";
+import {createBrowserRouter, Navigate} from "react-router-dom";
 import Error from "./views/Error";
 import Front from "./layouts/Front";
 import UserLayout from "./layouts/User";
+import Profile from "./views/Profile";
 
 const router = createBrowserRouter([
 
@@ -28,8 +29,16 @@ const router = createBrowserRouter([
         element: <UserLayout/>,
         children:[
             {
+                path: '/',
+                element: <Navigate to="/user" />,
+            },
+            {
                 path: '/user',
                 element: <User/>,
+            },
+            {
+                path: '/profile/edit',
+                element: <Profile/>,
             }
         ]
     },
