@@ -22,12 +22,25 @@ export const AuthContextProvider = ({children}) => {
             localStorage.removeItem('token');
         }
     }
+
+    const checkAndSetUser = (user) => {
+        if(user){
+            setUser({...user});
+        }else{
+            setUser({});
+            localStorage.removeItem('token');
+            _setToken(null);
+        }
+    }
+
+
     return (
         <AuthContext.Provider value={{
             user,
             token,
             setToken,
-            setUser
+            setUser,
+            checkAndSetUser
         }}>
             {children}
         </AuthContext.Provider>
